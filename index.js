@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const Discord = require("discord.js");
 const process = require("process");
+const express = require("express");
 
 const logger = require("./lib/logger");
 const help = require("./commands/help");
@@ -71,4 +72,14 @@ Client.on("interactionCreate", (interaction) => {
         break;
     }
   }
+});
+
+const app = express();
+
+app.get("/", (_, res) => {
+  res.send("Bot Reloaded.");
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  logger.info(`Server online on port ${process.env.PORT || 3000}`);
 });

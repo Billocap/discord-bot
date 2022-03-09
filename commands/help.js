@@ -3,21 +3,7 @@ module.exports = function(interaction) {
     embeds: [
       {
         title: "Commands",
-        description: "Type `/<command>` to use a command",
-        fields: [
-          {
-            name: "`/help`",
-            value: "Prints a help log."
-          },
-          {
-            name: "`/ping`",
-            value: "Play ping pong."
-          },
-          {
-            name: "`/marco`",
-            value: "Play marco polo."
-          }
-        ]
+        description: "`/help` Prints a help log.\n`/ping` Play ping pong.\n`/marco` Play marco polo.",
       }
     ]
   });

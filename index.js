@@ -51,25 +51,12 @@ Client.on("ready", () => {
 
 Client.on("interactionCreate", (interaction) => {
   if (interaction.isCommand()) {
-    switch (interaction.commandName) {
-      case "help":
-        logger.info(`${interaction.user.username} is lost.`);
-        help(interaction);
-        break;
-      
-      case "ping":
-        logger.info(`${interaction.user.username} is playing ping pong.`);
-        ping(interaction);
-        break;
-      
-      case "marco":
-        logger.info(`${interaction.user.username} is playing marco pong.`);
-        marco(interaction);
-        break;
-      
-      default:
-        interaction.reply("Command not implemented.");
-        break;
+    const command = require(`./commands/${interaction.commandName}`)
+
+    if (command) {
+      command(interaction)
+    } else {
+      interaction.reply("Command not implemented.");
     }
   }
 });

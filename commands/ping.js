@@ -1,13 +1,15 @@
-const figlet = require("figlet");
+const asciiBanner = require("../utils/asciiBanner")
+const Command = require("../lib/Command")
 
-module.exports = function(interaction) {
-  interaction.reply({
-    embeds: [
-      {
-        description: `\`\`\`diff\n${figlet.textSync("pong", {
-          font: "Poison"
-        }).split("\n").map(line => `- ${line}`).join("\n")}\`\`\``
-      }
-    ]
-  });
-}
+module.exports = Command(
+  "Play marco polo.",
+  function(interaction) {
+    interaction.reply({
+      embeds: [
+        {
+          description: asciiBanner("pong")
+        }
+      ]
+    })
+  }
+)
